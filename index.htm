@@ -13,6 +13,11 @@
       padding: 0;
     }
 
+    img {
+      width: 200px;
+
+    }
+
     #map {
       position: absolute;
       top: 0;
@@ -29,7 +34,7 @@
     const map = new mapboxgl.Map({
       container: 'map',
       // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-      style: 'mapbox://styles/mapbox/outdoors-v12',
+      style: 'mapbox://styles/deyawna/cmgfnybdy008n01rea2jgaoih',
       center: [-122.08076885427406, 37.705494865392225],
       zoom: 10
     });
@@ -44,11 +49,12 @@
               'type': 'Feature',
               'geometry': {
                 'type': 'Point',
-                'coordinates': [-122.08076885427406, 37.705494865392225],
+                'coordinates': [-122.09029532959735, 37.698359327931264],
               },
               "properties": {
                 'name': "Where I was born",
                 'description': "I was born May 8th at a castro valley hospital.",
+                'image': "img/eden_hospital.webp"
               }
             },
             {
@@ -60,17 +66,19 @@
               "properties": {
                 'name': "My first field trip",
                 'description': "I went to my first every field trip to fairyland in elementary school.",
+                'image': "img/fairy_land.jpeg"
               }
             },
             {
               'type': 'Feature',
               'geometry': {
                 'type': 'Point',
-                'coordinates': [-122.19273596929592, 37.76527703153825],
+                'coordinates': [-122.19430248782457, 37.76556378121723],
               },
               "properties": {
-                'name': "Where I started middle school",
+                'name': "Where I started Middle School & High School",
                 'description': "I still go to this school.",
+                'image': "img/ccpa_img.jpg"
               }
             }
           ]
@@ -96,11 +104,12 @@
         // Copy coordinates array.
         const coordinates = e.feature.geometry.coordinates.slice();
         const name = e.feature.properties.name;
+        const image = e.feature.properties.image;
         const description = e.feature.properties.description;
 
         new mapboxgl.Popup()
           .setLngLat(coordinates)
-          .setHTML("<br><strong>" + name + "</strong><br/>" + description)
+          .setHTML("<img src='" + image + "'><br><strong>" + name + "</strong><br/>" + description)
           .addTo(map);
       }
     });
